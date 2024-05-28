@@ -1,27 +1,24 @@
 name: Deploy Python Images
 
 on:
-  push:
-    branches: [ "main" ]
-    paths: [ "python/**" ]
-  workflow_dispatch:
+    push:
+        branches: ["main"]
+        paths: ["python/**"]
+    workflow_dispatch:
 
 jobs:
+    build:
+        runs-on: ubuntu-latest
 
-  build:
+        steps:
+            - uses: actions/checkout@v4
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - uses: mr-smithers-excellent/docker-build-push@v6
-      name: Build & push Docker image
-      with:
-        image: pressw/python-ai
-        tags: 3.11, latest
-        directory: python
-        registry: docker.io
-        dockerfile: Dockerfile-3.11
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+            - uses: mr-smithers-excellent/docker-build-push@v6
+              name: Build & push Docker image
+              with:
+                  image: pressw/python-ai
+                  tags: 3.11, latest
+                  registry: docker.io
+                  dockerfile: python/Dockerfile-3.11
+                  username: ${{ secrets.DOCKER_USERNAME }}
+                  password: ${{ secrets.DOCKER_PASSWORD }}
