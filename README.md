@@ -1,5 +1,8 @@
 # PressW's Public Docker Images
+
 [![Deploy Python Images](https://github.com/pressw-llc/docker-images/actions/workflows/python-images.yml/badge.svg)](https://github.com/pressw-llc/docker-images/actions/workflows/python-images.yml)
+
+![Docker Pulls](https://img.shields.io/docker/pulls/pressw/python-ai.svg)
 
 Welcome to PressW's Public Docker Images repository! This repository hosts Docker images that are publicly available for use. The current image available is `pressw/python-ai`, an extension of the official Python image with additional system dependencies for enhanced AI capabilities.
 
