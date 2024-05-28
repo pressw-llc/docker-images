@@ -20,5 +20,7 @@ jobs:
                   tags: 3.11, latest
                   registry: docker.io
                   dockerfile: python/Dockerfile-3.11
+                  platform: linux/amd64,linux/arm64
+                  multiPlatform: true
                   username: ${{ secrets.DOCKER_USERNAME }}
                   password: ${{ secrets.DOCKER_PASSWORD }}
