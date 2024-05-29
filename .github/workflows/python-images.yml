@@ -7,7 +7,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    build:
+    3.11:
         runs-on: ubuntu-latest
 
         steps:
@@ -17,9 +17,27 @@ jobs:
               name: Build & push Docker image
               with:
                   image: pressw/python-ai
-                  tags: 3.11, latest
+                  tags: 3.11
                   registry: docker.io
                   dockerfile: python/Dockerfile-3.11
+                  platform: linux/amd64,linux/arm64
+                  multiPlatform: true
+                  username: ${{ secrets.DOCKER_USERNAME }}
+                  password: ${{ secrets.DOCKER_PASSWORD }}
+
+    3.12:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: mr-smithers-excellent/docker-build-push@v6
+              name: Build & push Docker image
+              with:
+                  image: pressw/python-ai
+                  tags: 3.12, latest
+                  registry: docker.io
+                  dockerfile: python/Dockerfile-3.12
                   platform: linux/amd64,linux/arm64
                   multiPlatform: true
                   username: ${{ secrets.DOCKER_USERNAME }}
